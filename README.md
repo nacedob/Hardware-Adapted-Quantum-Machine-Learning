@@ -1,38 +1,36 @@
 # Hardware-Adapted-Quantum-Machine-Learning
 This repository explores Hardware-Adapted Quantum Machine Learning. It is part of my final msc thesis.
 
+It explores Embedding Quantum Kernels (EQK) with Quantum Neural Networks (QNN) using Data Reuploading. This model is based on a the paper by Pablo Rodriguez Grasa [Training embedding quantum kernels with data re-uploading quantum neural networks](https://arxiv.org/pdf/2401.04642).
 
-# Embedding-Quantum-Kernels-with-QNN
-
-This code implements the paper by Pablo Rodriguez Grasa [Training embedding quantum kernels with data re-uploading quantum neural networks](https://arxiv.org/pdf/2401.04642).
-
-## Abstract
-Kernel methods play a crucial role in machine learning and the Embedding Quantum Kernels (EQKs), an extension to quantum systems, have shown very promising performance. However, choosing the right embedding for EQKs is challenging. We address this by proposing a p-qubit Quantum Neural Network (QNN) based on data re-uploading to identify the optimal q-qubit EQK for a task (p-to-q). This method requires constructing the kernel matrix only once, offering improved efficiency. In particular, we focus on two cases: n-to-n, where we propose a scalable approach to train an n-qubit QNN, and 1-to-n, demonstrating that the training of a single-qubit QNN can be leveraged to construct powerful EQKs.
+The main purpose of this repository is to adapt this model to improve its actual implementation on current real quantum hardware in an efficient way. To do this, the main idea is to change parametrized gates by parametrized pulses. More details are found on the [final thesis document](todo.txt)
 
 ## Code structure
 The code is structured as follows:
 
 ### Quantum Neural Networks:
-- [src/dataReuploading](src/dataReuploading) folder contains code containing the Quantum Neural Network part. 
-  - [SingleQNN](src/dataReuploading/SingleQNN.py) models 1 qubit neural network.
-  - [MultiQNN](src/dataReuploading/MultiQNN.py) models n qubit neural networks, being n arbitrary. In principle, taking  `n_qubits=1` should get the same results and object than the SingleQNN code.
-  - [Constant](src/dataReuploading/Constant.py) is not actually a QNN. It takes the training set and seeks the most popular layer. Then, it maps every possible state in the Hilbert space to that specific label, with no computations being done. It is used as the *enemy* to beat, the minimum accuracy of the QNN and EQK to be achieved.
-
-Any network in any QNN class has a `train` method as well as a method to save the python object containing the net (`save_qnn`) and the corresponding method to load it (`load_qnn`), the latter being static.
+- [src/QNN](src/QNN) folder contains code containing the Quantum Neural Network part, using Data Reuploading strategy. 
+  - [BaseQNN](src/dataReuploading/SingleQNN.py): an abstract class modelling the idea of a QNN. The main methods are `train` to learn parameters, `predict` to make the prediction of a dataset and `get_accuracy`that computes the current accuracy of the model on a dataset with its correspoding expected labels. There is an abstract method `_base_circuit` to be defined by each of its children. This method assigns the quantum circuit to be used as core of the computations. 
+  - [GateQNN](src/dataReuploading/GateQNN.py) models the gate (traditional) version of a QNN. The parametrized gates are arbitrary rotations, with 3 parameters each to be used.
+  - [PulsedQNN](src/dataReuploading/PulsedQNN.py) models the pulsed version of a QNN. The pulses are modelled using Trotter-Suzuki approximation. There are multiple attributes that can be defined to specify the exact hardware implementation. TODO
 
 ### Embedding Quantum Kernels:
-
 - [src/EQK](src/EQK) folder contains code containing the Embedding Quantum Kernel part.
-  - [EQK1](src/EQK/EQK1.py) code contains model the 1-1 architecture (more in Pablo's paper)
   - [EQK1](src/EQK/EQKn.py) code contains model the n-n architecture (more in Pablo's paper)
 
-### Data sets
+### Datasets
 
-Some interesting data sets have been included in the within the class [sampler](Sampler). There are two classes: one modelling 2D data sets and another one implementing the 3D version of these same sets. 
+Some interesting data sets have been included in the within the sampler package [Sampler](src/Sampler). There are four classes: 
+- [Sampler2D](src/Sampler2D.py): creates synthetic 2D datasets (including those appearing in the original reference - corners, sinus, circles and spirals).
+- [Sampler3D](src/Sampler3D.py): creates synthetic 3D datasets (including the three-dimensional version of those appearing in the original reference - corners3d, sinus3d, shell and helix).
+- [MNISTSampler](src/MNISTSampler.py): that loads and preprocesses MNIST Fashion and Handwritten datasets.
+- [RandomSampler](src/RandomSampler.py): that creates random datasets using `sklearn` package. There is a general method (`get_data`) where one can choose freely the paramters to create a random dataset and three preconfigures datasets (`random_easy`, `random_medium` and `random_hard`) that create random datasets with increasing difficulty.
 
-One can try any other data set. Feel free to write your one methods in these classes.
+### Visualization
+TODO
 
-Note that the methods in [visualization](Sampler/visualization) might be incorrect and raise error. I will be working in this soon.
+### Experiments
+TODO
 
 ### Tests
 
@@ -40,7 +38,7 @@ Almost every method and class in this code has their corresponding unitary tests
 
 ## Example
 
-For instance, for a MultiQNN:
+For instance, create a PulsedQNN using brisbane hardware and the novel pulsed encoding: TODO (el codigo de abajo es a modificar tambien)
 
 ```python
 import unittest
