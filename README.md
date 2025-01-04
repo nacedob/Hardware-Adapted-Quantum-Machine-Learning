@@ -14,17 +14,17 @@ The code is structured as follows:
   - [GateQNN](src/dataReuploading/GateQNN.py) models the gate (traditional) version of a QNN. The parametrized gates are arbitrary rotations, with 3 parameters each to be used.
   - [PulsedQNN](src/dataReuploading/PulsedQNN.py) models the pulsed version of a QNN. The pulses are modelled using Trotter-Suzuki approximation. There are multiple attributes that can be defined to specify the exact hardware implementation. TODO
 
-### Embedding Quantum Kernels:
+### Embedding Quantum Kernels - package:
 - [src/EQK](src/EQK) folder contains code containing the Embedding Quantum Kernel part.
   - [EQK1](src/EQK/EQKn.py) code contains model the n-n architecture (more in Pablo's paper)
 
 ### Datasets
 
 Some interesting data sets have been included in the within the sampler package [Sampler](src/Sampler). There are four classes: 
-- [Sampler2D](src/Sampler2D.py): creates synthetic 2D datasets (including those appearing in the original reference - corners, sinus, circles and spirals).
-- [Sampler3D](src/Sampler3D.py): creates synthetic 3D datasets (including the three-dimensional version of those appearing in the original reference - corners3d, sinus3d, shell and helix).
-- [MNISTSampler](src/MNISTSampler.py): that loads and preprocesses MNIST Fashion and Handwritten datasets.
-- [RandomSampler](src/RandomSampler.py): that creates random datasets using `sklearn` package. There is a general method (`get_data`) where one can choose freely the paramters to create a random dataset and three preconfigures datasets (`random_easy`, `random_medium` and `random_hard`) that create random datasets with increasing difficulty.
+- [Sampler2D](src/Sampler/Sampler2D.py): creates synthetic 2D datasets (including those appearing in the original reference - corners, sinus, circles and spirals).
+- [Sampler3D](src/Sampler/Sampler3D.py): creates synthetic 3D datasets (including the three-dimensional version of those appearing in the original reference - corners3d, sinus3d, shell and helix).
+- [MNISTSampler](src/Sampler/MNISTSampler.py): that loads and preprocesses MNIST Fashion and Handwritten datasets.
+- [RandomSampler](src/Sampler/RandomSampler.py): that creates random datasets using `sklearn` package. There is a general method (`get_data`) where one can choose freely the paramters to create a random dataset and three preconfigures datasets (`random_easy`, `random_medium` and `random_hard`) that create random datasets with increasing difficulty.
 
 ### Visualization
 TODO
