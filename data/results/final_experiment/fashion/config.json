@@ -1,0 +1,138 @@
+{
+    "0": {
+        "n_qubits": [
+            1,
+            2
+        ],
+        "layers_min": 1,
+        "layers_max": 5,
+        "n_trials": 35.0,
+        "n_jobs": 7,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 2,
+        "dataset": "fashion",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 16406.037369966507,
+        "time_per_experiment": 820.3018684983253
+    },
+    "1": {
+        "n_qubits": [
+            1,
+            2
+        ],
+        "layers_min": 1,
+        "layers_max": 6,
+        "n_trials": 35.0,
+        "n_jobs": 6,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 3,
+        "dataset": "fashion",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 2541.957627773285,
+        "time_per_experiment": 70.60993410481348
+    },
+    "2": {
+        "n_qubits": [
+            1
+        ],
+        "layers_min": 7,
+        "layers_max": 8,
+        "n_trials": 35.0,
+        "n_jobs": 7,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 3,
+        "dataset": "fashion",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 2938.6137359142303,
+        "time_per_experiment": 489.7689559857051
+    },
+    "3": {
+        "n_qubits": [
+            2
+        ],
+        "layers_min": 7,
+        "layers_max": 8,
+        "n_trials": 35.0,
+        "n_jobs": 7,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 3,
+        "dataset": "fashion",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 21408.121868610382,
+        "time_per_experiment": 3568.020311435064
+    },
+    "4": {
+        "n_qubits": [
+            1,
+            2
+        ],
+        "layers_min": 7,
+        "layers_max": 8,
+        "n_trials": 35.0,
+        "n_jobs": 7,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 2,
+        "dataset": "fashion",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 16797.186428308487,
+        "time_per_experiment": 2099.648303538561
+    },
+    "5": {
+        "n_qubits": [
+            1,
+            2
+        ],
+        "layers_min": 1,
+        "layers_max": 6,
+        "n_trials": 35.0,
+        "n_jobs": 7,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 2,
+        "dataset": "fashion",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 6974.953919172287,
+        "time_per_experiment": 290.623079965512
+    }
+}

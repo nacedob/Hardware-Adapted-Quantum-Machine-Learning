@@ -1,0 +1,117 @@
+{
+    "0": {
+        "n_qubits": [
+            1,
+            2
+        ],
+        "layers_min": 1,
+        "layers_max": 4,
+        "n_trials": 35.0,
+        "n_jobs": 6,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 2,
+        "dataset": "helix",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 10792.224937200546,
+        "time_per_experiment": 674.5140585750341
+    },
+    "1": {
+        "n_qubits": [
+            1,
+            2
+        ],
+        "layers_min": 1,
+        "layers_max": 6,
+        "n_trials": 35.0,
+        "n_jobs": 7,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 2,
+        "dataset": "helix",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 2423.8186552524567,
+        "time_per_experiment": 100.99244396885236
+    },
+    "2": {
+        "n_qubits": [
+            1,
+            2
+        ],
+        "layers_min": 7,
+        "layers_max": 8,
+        "n_trials": 35.0,
+        "n_jobs": 7,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 5,
+        "dataset": "helix",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 3150.844893693924,
+        "time_per_experiment": 157.5422446846962
+    },
+    "3": {
+        "n_qubits": [
+            1,
+            2
+        ],
+        "layers_min": 1,
+        "layers_max": 4,
+        "n_trials": 35.0,
+        "n_jobs": 7,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 1,
+        "dataset": "helix",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 5760.493922710419,
+        "time_per_experiment": 720.0617403388023
+    },
+    "4": {
+        "n_qubits": [
+            1,
+            2
+        ],
+        "layers_min": 5,
+        "layers_max": 6,
+        "n_trials": 35.0,
+        "n_jobs": 7,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 3,
+        "dataset": "helix",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 20119.822074651718,
+        "time_per_experiment": 1676.6518395543098
+    }
+}

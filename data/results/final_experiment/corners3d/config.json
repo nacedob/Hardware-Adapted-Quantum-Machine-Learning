@@ -1,0 +1,136 @@
+{
+    "0": {
+        "n_qubits": [
+            1,
+            2
+        ],
+        "layers_min": 1,
+        "layers_max": 6,
+        "n_trials": 35.0,
+        "n_jobs": 6,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 3,
+        "dataset": "corners3d",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 7436.927537679672,
+        "time_per_experiment": 206.58132049110202
+    },
+    "1": {
+        "n_qubits": [
+            1
+        ],
+        "layers_min": 7,
+        "layers_max": 8,
+        "n_trials": 35.0,
+        "n_jobs": 7,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 3,
+        "dataset": "corners3d",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 5452.851974964142,
+        "time_per_experiment": 908.8086624940237
+    },
+    "2": {
+        "n_qubits": [
+            2
+        ],
+        "layers_min": 7,
+        "layers_max": 8,
+        "n_trials": 35.0,
+        "n_jobs": 7,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 3,
+        "dataset": "corners3d",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 21405.626669168472,
+        "time_per_experiment": 3567.604444861412
+    },
+    "3": {
+        "n_qubits": [
+            2
+        ],
+        "layers_min": 1,
+        "layers_max": 6,
+        "n_trials": 35.0,
+        "n_jobs": 7,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 2,
+        "dataset": "corners3d",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 19379.45456957817,
+        "time_per_experiment": 1614.9545474648476
+    },
+    "4": {
+        "n_qubits": [
+            1,
+            2
+        ],
+        "layers_min": 7,
+        "layers_max": 8,
+        "n_trials": 35.0,
+        "n_jobs": 7,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 2,
+        "dataset": "corners3d",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 3226.5871069431305,
+        "time_per_experiment": 403.3233883678913
+    },
+    "5": {
+        "n_qubits": [
+            1
+        ],
+        "layers_min": 1,
+        "layers_max": 6,
+        "n_trials": 35.0,
+        "n_jobs": 7,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 2,
+        "dataset": "corners3d",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 3731.6540064811707,
+        "time_per_experiment": 310.9711672067642
+    }
+}

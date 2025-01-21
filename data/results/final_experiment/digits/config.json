@@ -1,0 +1,161 @@
+{
+    "0": {
+        "n_qubits": [
+            1,
+            2
+        ],
+        "layers_min": 1,
+        "layers_max": 5,
+        "n_trials": 35.0,
+        "n_jobs": 7,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 2,
+        "dataset": "digits",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 2001.6396877765656,
+        "time_per_experiment": 100.08198438882827
+    },
+    "1": {
+        "n_qubits": [
+            1,
+            2
+        ],
+        "layers_min": 1,
+        "layers_max": 6,
+        "n_trials": 35.0,
+        "n_jobs": 6,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 3,
+        "dataset": "digits",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 129.84737968444824,
+        "time_per_experiment": 3.60687165790134
+    },
+    "2": {
+        "n_qubits": [
+            1
+        ],
+        "layers_min": 6,
+        "layers_max": 8,
+        "n_trials": 35.0,
+        "n_jobs": 7,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 3,
+        "dataset": "digits",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 2954.235773563385,
+        "time_per_experiment": 328.24841928482056
+    },
+    "3": {
+        "n_qubits": [
+            2
+        ],
+        "layers_min": 7,
+        "layers_max": 8,
+        "n_trials": 35.0,
+        "n_jobs": 7,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 3,
+        "dataset": "digits",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 21499.727781772614,
+        "time_per_experiment": 3583.287963628769
+    },
+    "4": {
+        "n_qubits": [
+            1,
+            2
+        ],
+        "layers_min": 1,
+        "layers_max": 6,
+        "n_trials": 35.0,
+        "n_jobs": 6,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 2,
+        "dataset": "digits",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 30380.66590666771,
+        "time_per_experiment": 1265.8610794444878
+    },
+    "5": {
+        "n_qubits": [
+            1,
+            2
+        ],
+        "layers_min": 7,
+        "layers_max": 8,
+        "n_trials": 35.0,
+        "n_jobs": 7,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 2,
+        "dataset": "digits",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 16827.383643627167,
+        "time_per_experiment": 2103.422955453396
+    },
+    "6": {
+        "n_qubits": [
+            1,
+            2
+        ],
+        "layers_min": 7,
+        "layers_max": 8,
+        "n_trials": 35.0,
+        "n_jobs": 7,
+        "n_train": 500,
+        "n_test": 250,
+        "point_dimension": 3,
+        "n_seeds": 2,
+        "dataset": "digits",
+        "optimizer": "rms",
+        "interface": "jax",
+        "n_epochs": 30,
+        "LOAD_RESULTS": true,
+        "tuning_bool": true,
+        "lr": -1,
+        "spent_time": 15079.586467266083,
+        "time_per_experiment": 1884.9483084082603
+    }
+}
