@@ -1,83 +1,90 @@
 # Hardware-Adapted-Quantum-Machine-Learning
-This repository explores Hardware-Adapted Quantum Machine Learning. It is part of my final msc thesis.
 
-It explores Embedding Quantum Kernels (EQK) with Quantum Neural Networks (QNN) using Data Reuploading. This model is based on a the paper by Pablo Rodriguez Grasa [Training embedding quantum kernels with data re-uploading quantum neural networks](https://arxiv.org/pdf/2401.04642).
+**Author**: Ignacio Benito Acdo Blanco  
+**Institution**: University Charles III of Madrid  
+**Thesis Title**: *Quantum Hardware Adapted Machine Learning*
 
-The main purpose of this repository is to adapt this model to improve its actual implementation on current real quantum hardware in an efficient way. To do this, the main idea is to change parametrized gates by parametrized pulses. More details are found on the [final thesis document](todo.txt)
+This repository implements the research from my master's thesis, *Hardware-Adapted Quantum Machine Learning*. The project introduces a pioneering framework for Pulsed Quantum Machine Learning (PQML), replacing conventional parameterized quantum gates with hardware-efficient parameterized quantum pulses. It also features an innovative encoding method using quantum pulse control to optimize model performance in the NISQ era.
 
-## Code structure
-The code is structured as follows:
+## Features
 
-### Quantum Neural Networks:
-- [src/QNN](src/QNN) folder contains code containing the Quantum Neural Network part, using Data Reuploading strategy. 
-  - [BaseQNN](src/dataReuploading/SingleQNN.py): an abstract class modelling the idea of a QNN. The main methods are `train` to learn parameters, `predict` to make the prediction of a dataset and `get_accuracy`that computes the current accuracy of the model on a dataset with its correspoding expected labels. There is an abstract method `_base_circuit` to be defined by each of its children. This method assigns the quantum circuit to be used as core of the computations. 
-  - [GateQNN](src/dataReuploading/GateQNN.py) models the gate (traditional) version of a QNN. The parametrized gates are arbitrary rotations, with 3 parameters each to be used.
-  - [PulsedQNN](src/dataReuploading/PulsedQNN.py) models the pulsed version of a QNN. The pulses are modelled using Trotter-Suzuki approximation. There are multiple attributes that can be defined to specify the exact hardware implementation. TODO
+- **PQML Framework**: Custom framework for training quantum neural networks using pulse programming.
+- **Pulse-Based Encoding**: New encoding method tailored for hardware constraints.
+- **Quantum Embedding Kernels**: Integration of pulse-trained quantum neural networks in classification tasks.
+- **Benchmarking**: Tools for comparing PQML models with traditional gate-based quantum machine learning models.
 
-### Embedding Quantum Kernels - package:
-- [src/EQK](src/EQK) folder contains code containing the Embedding Quantum Kernel part.
-  - [EQK1](src/EQK/EQKn.py) code contains model the n-n architecture (more in Pablo's paper)
+## Code Structure
+
+### Quantum Neural Networks
+
+- **QNN Models**: Located in [src/QNN](src/QNN), includes:
+  - **BaseQNN**: Abstract class for QNNs with methods for training, prediction, and accuracy calculation.
+  - **GateQNN**: Implements QNN using traditional parameterized gates.
+  - **PulsedQNN**: Implements QNN using pulsed quantum operations via Trotter-Suzuki approximation. Allows hardware-specific configurations via parameters like `encoding`.
+
+### Pennypulse
+
+This is an installable package that provides modified functions for Pennylane, enabling pulse simulations for transmon qubits. It includes functionality to define Trotter-Suzuki evolution for both single-qubit and two-qubit pulses. The package is a critical dependency used by the `PulsedQNN` class.
+
+To run this project, ensure all requirements, including `Pennypulse`, are installed by executing:
+
+```bash
+python -m pip install -r ./requirements.txt
+```
 
 ### Datasets
 
-Some interesting data sets have been included in the within the sampler package [Sampler](src/Sampler). There are four classes: 
-- [Sampler2D](src/Sampler/Sampler2D.py): creates synthetic 2D datasets (including those appearing in the original reference - corners, sinus, circles and spirals).
-- [Sampler3D](src/Sampler/Sampler3D.py): creates synthetic 3D datasets (including the three-dimensional version of those appearing in the original reference - corners3d, sinus3d, shell and helix).
-- [MNISTSampler](src/Sampler/MNISTSampler.py): that loads and preprocesses MNIST Fashion and Handwritten datasets.
-- [RandomSampler](src/Sampler/RandomSampler.py): that creates random datasets using `sklearn` package. There is a general method (`get_data`) where one can choose freely the paramters to create a random dataset and three preconfigures datasets (`random_easy`, `random_medium` and `random_hard`) that create random datasets with increasing difficulty.
-
-### Visualization
-TODO
+- **Samplers**: In [src/Sampler](src/Sampler):
+  - **Sampler2D**: Generates synthetic 2D datasets (e.g., corners, sinus, circles, spirals).
+  - **Sampler3D**: Generates synthetic 3D datasets (e.g., corners3d, sinus3d, shell, helix).
+  - **MNISTSampler**: Loads and preprocesses MNIST Fashion and Handwritten datasets.
+  - **RandomSampler**: Creates random datasets with varying difficulty levels.
 
 ### Experiments
-TODO
 
+- **Simulation Scripts**: In [src/experiments](src/experiments):
+  - **final_experiment.py**: Trains GateQNN, MixedQNN, and PulsedQNN on a fixed dataset.
+  - **main.py**: Runs datasets from the [Supplementary Materials document](Documents/Suplementary_Materials___Hardware_Adapted_QML.pdf), including new datasets introduced in the thesis.
+  - **pulse_encoding.py**: Runs one encoding step for the pulsed and gate-based encodings and plots it on the Bloch Sphere.
 ### Tests
 
-Almost every method and class in this code has their corresponding unitary tests that are located in [test folder](tests). They have been written with `unittest`. Note that some of the tests have been abandoned or removed. In principle, the classes are correctly implemented. Should you find any error, you can send me a message. I really appreciate collaboration.
+- **Unit Tests**: Located in [tests](tests), extensively covering methods and classes using `unittest`. Contributions and error reports are welcome for continuous improvement.
+
+
+### Visualization
+Some functions for visualizing the results of the experiments are located in [src/Visualization](src/Visualization). 
+
+### Data
+In the [data folder](data), one can find the images presented in the documents as well as some results for additional experiments.
+
 
 ## Example
 
-For instance, create a PulsedQNN using brisbane hardware and the novel pulsed encoding: TODO (el codigo de abajo es a modificar tambien)
+To illustrate, here’s how to create and train a PulsedQNN using Brisbane hardware with the novel pulsed encoding:
 
 ```python
-import unittest
-from src.dataReuploading import MultiQNN, SingleQNN
-from src.Sampler import Sampler
-from pennylane import numpy as np
-from icecream import ic
 import matplotlib.pyplot as plt
-from warnings import warn
-from time import time
-from src.visualization import plot_predictions_2d
-from src.utils import increase_dimensions
+from src.QNN import GateQNN, PulsedQNN
+from src.Sampler import Sampler
+import random
+import numpy as np
+SEED = 42
+random.seed(SEED)
+np.random.seed(SEED)
 
-data, labels = Sampler().circle(n_points=200)
-        data_test, labels_test = Sampler().circle(n_points=200)
+# Generate synthetic data (example: circle dataset)
+data, labels = Sampler().circle(n_points=200, seed=SEED)
+data_test, labels_test = Sampler().circle(n_points=200, seed=SEED)
 
-        layers = 5
+# Train QNNs
+layers = 5
+gateqnn = GateQNN(num_layers=layers, num_qubits=2, realistic_gates=False, seed=SEED)
+pulsedqnn = PulsedQNN(num_layers=layers, num_qubits=2)
 
-        multiqnn = MultiQNN(num_layers=layers, num_qubits=3)
-        singleqnn = SingleQNN(num_layers=layers)
+# Train and evaluate models
+df_gate = gateqnn.train(data, labels, data_test, labels_test, silent=False)
+df_pulsed = pulsedqnn.train(data, labels, data_test, labels_test, silent=False)
 
-        df_multi = multiqnn.train(data, labels, data_test, labels_test, silent=False)
-        df_single = singleqnn.train(data, labels, data_test, labels_test, silent=False)
-
-        ic(df_single, df_multi)
-
-        # Ensure that final loss does not differ in more than a 7.5%
-        loss_single = df_single['loss'].values[-1]
-        loss_multi = df_multi['loss'].values[-1]
-
-        # Print predictions
-        prediction_multi = multiqnn.predict(data_test)
-        prediction_single = singleqnn.predict(data_test)
-        fig, ax = plt.subplots(1,2)
-        plot_predictions_2d(data_test, prediction_multi, labels_test, axis=ax[0],
-                            title=f"multiqnn prediction - accuracy {multiqnn.get_accuracy(data, labels)}")
-        plot_predictions_2d(data_test, prediction_single, labels_test, axis=ax[1],
-                            title=f"singleqnn prediction - accuracy {multiqnn.get_accuracy(data, labels)}")
-        plt.show()
-
-
+# Print and compare results
+print('Training stats gate QNN:\n', df_gate, '\n\nTraining stats pulsed QNN:\n', df_pulsed)
 ```

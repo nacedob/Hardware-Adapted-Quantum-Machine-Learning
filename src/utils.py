@@ -1,3 +1,5 @@
+import inspect
+import json
 from jax import numpy as jnp
 from pennylane import numpy as np
 from numpy import savetxt
@@ -188,15 +190,60 @@ def create_path_if_missing(path):
         os.makedirs(directory)
 
 
+def _process_extension(filename, extension):
+    try:
+        root, ext = filename.rsplit('.', 1)
+    except ValueError:
+        # The file has no extension, so we add it
+        return filename + '.' + extension
+    else:
+        # The file already has an extension
+        if ext != extension:
+            raise ValueError(f"The file '{filename}' already has the extension '.{ext}'. Cannot add the extension '.{extension}'.")
+        else:
+            # The extension is already correct
+            return filename
+
+
+def save_dict_to_json(dict: dict, path:str):
+    path = _process_extension(path, extension='json')
+    with open(path, 'w') as file:
+        json.dump(dict, file, indent=4)
+
+def load_json_to_dict(path:str):
+    path = _process_extension(path, extension='json')
+    with open(path, 'r') as file:
+        return json.load(file)
+    
 ### RANDOM
+def get_current_folder():
+    # Obtener el stack frame actual
+    frame = inspect.currentframe()
+    # Obtener el stack frame del llamador
+    caller_frame = inspect.getouterframes(frame, 2)
+    # Obtener la ruta del archivo del llamador
+    ruta_script = caller_frame[1].filename
+    # Obtener el directorio padre
+    directorio_actual = os.path.dirname(os.path.abspath(ruta_script))
+    # Devolver la ruta del directorio padre
+    return directorio_actual
 
-def print_gray(text):
-    # ANSI escape code for gray text
-    gray_code = "\033[90m"
-    reset_code = "\033[0m"
-    # Print the text in gray
-    print(f"{gray_code}{text}{reset_code}")
+def get_root_path(start_dir=None):
+    if start_dir is None:
+        start_dir = os.getcwd()
 
+    current_dir = os.path.abspath(start_dir)
+
+    while True:
+        if any(os.path.isdir(os.path.join(current_dir, folder)) for folder in ['src', 'tests']):
+            return current_dir
+
+        # Move up one directory
+        parent_dir = os.path.dirname(current_dir)
+        if parent_dir == current_dir:  # Reached the root of the file system
+            return None
+
+        current_dir = parent_dir
 
 def get_function(method_name, Class):
     # Get all attributes (including methods) of the class
@@ -252,3 +299,55 @@ I = np.array([[1, 0], [0, 1]], dtype=complex)
 X = np.array([[0, 1], [1, 0]], dtype=complex)
 Y = np.array([[0, -1j], [1j, 0]], dtype=complex)
 Z = np.array([[1, 0], [0, -1]], dtype=complex)
+
+
+# Prints
+def colorize(text, color_code):
+  """Prints the given text in the specified color.
+
+  Args:
+    text: The text to print.
+    color_code: The ANSI escape code for the desired color.
+  """
+  print(f"\033[{color_code}m" + text + "\033[0m")
+
+def print_in_gray(text):
+  """Prints the given text in gray."""
+  colorize(text, 90)
+
+def print_in_yellow(text):
+  """Prints the given text in yellow."""
+  colorize(text, 93)
+
+def print_in_blue(text):
+  """Prints the given text in blue."""
+  colorize(text, 94)
+
+def print_in_red(text):
+  """Prints the given text in red."""
+  colorize(text, 91)
+
+def print_in_green(text):
+  """Prints the given text in green."""
+  colorize(text, 92)
+
+def print_in_orange(text):
+  """Prints the given text in orange."""
+  colorize(text, 33)
+
+def print_in_purple(text):
+  """Prints the given text in purple."""
+  colorize(text, 35)
+
+def print_in_cyan(text):
+  """Prints the given text in cyan."""
+  colorize(text, 36)
+
+def print_in_light_gray(text):
+  """Prints the given text in light gray."""
+  colorize(text, 37)
+
+def print_in_dark_gray(text):
+  """Prints the given text in dark gray."""
+  colorize(text, 90)
+

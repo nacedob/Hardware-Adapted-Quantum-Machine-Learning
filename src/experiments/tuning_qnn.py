@@ -65,7 +65,7 @@ save_qnn = ast.literal_eval(args.save_qnn)
 
 
 
-EXP_RESULTS_PATH = os.path.join(get_root_path('Hardware-Adapted-Quantum-Machine-Learning'), f'data/results/tuning/{dataset}/{model}')
+EXP_RESULTS_PATH = os.path.join(get_root_path(), f'data/results/tuning/{dataset}/{model}')
 QNN_PATH = os.path.join(EXP_RESULTS_PATH, 'trained_qnn')
 os.makedirs(EXP_RESULTS_PATH, exist_ok=True)
 os.makedirs(QNN_PATH, exist_ok=True)

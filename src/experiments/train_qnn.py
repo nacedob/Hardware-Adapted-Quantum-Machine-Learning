@@ -66,7 +66,7 @@ if lr == -1:
     lr = 0.05
 
 ################ EXPERIMENT_FOLDERS #################################
-EXP_RESULTS_PATH = os.path.join(get_root_path('Hardware-Adapted-Quantum-Machine-Learning'), f'data/results/train_qnn/{dataset}'+'/{}')
+EXP_RESULTS_PATH = os.path.join(get_root_path(), f'data/results/train_qnn/{dataset}'+'/{}')
 QNN_PATH = os.path.join(EXP_RESULTS_PATH, 'trained_qnn')
 PARTIAL_PATH = os.path.join(EXP_RESULTS_PATH, 'partial')
 os.makedirs(EXP_RESULTS_PATH.format('PulsedQNN_encoding_gate'), exist_ok=True)

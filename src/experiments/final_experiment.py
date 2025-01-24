@@ -15,7 +15,7 @@ from joblib import Parallel, delayed
 import ast
 from src.utils import pickle_extension
 from src.QNN.BaseQNN import BaseQNN
-from .config_exp import get_highest_id, get_dataset, get_qnn, get_optimal_lr, get_optimal_opt_parameters, get_eqk
+from .config_exp import get_highest_id, get_dataset, get_qnn, get_optimal_lr, get_optimal_opt_parameters
 import os
 from warnings import filterwarnings, warn
 
@@ -89,7 +89,7 @@ empty_df = pd.DataFrame([], columns=['n_qubits', 'n_layers', 'seed', 'train_loss
 
 
 ################ EXPERIMENT PATHS #################################
-EXP_RESULTS_PATH = os.path.join(get_root_path('Hardware-Adapted-Quantum-Machine-Learning'),
+EXP_RESULTS_PATH = os.path.join(get_root_path(),
                                 f'data/results/final_experiment/{dataset}')
 QNN_PATH = os.path.join(EXP_RESULTS_PATH, 'trained_qnn/')
 os.makedirs(EXP_RESULTS_PATH, exist_ok=True)

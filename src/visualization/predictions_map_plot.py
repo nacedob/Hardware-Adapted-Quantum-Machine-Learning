@@ -2,11 +2,12 @@ from math import pi
 import pandas as pd
 import matplotlib.pyplot as plt
 from src.QNN import GateQNN
-from src.utils import print_in_blue, get_root_path, load_json_to_dict
+from src.utils import print_in_blue
 from src.visualization import dark_pink, dark_violet
 import argparse
 from src.experiments.config_exp import get_dataset, get_qnn
 from src.visualization import visualize_predictions_2d
+from src.utils import get_root_path, load_json_to_dict
 from icecream import ic
 from copy import deepcopy
 import os
@@ -43,7 +44,7 @@ trials = args.trials
 
 
 ################ LOAD DATASET ################
-x, y, _, _ = get_dataset(dataset, 400, 10, 'jax', points_dimension=2, seed=seed, scale=pi)
+x, y, _, _ = get_dataset(dataset, 400, 10, 'jax', points_dimension=2, seed=seed, scale=1)
 
 qnns = {}
 accs = {}
@@ -111,6 +112,8 @@ for i, model in enumerate(models):
                                      pointcolor0='#ad6cad', pointcolor1=dark_violet, legend=False)
     ax[i].set_title(f'{model.capitalize()} - Accuracy: {accs[model]}', fontsize=FONTSIZE)
 
+    ax[i].set_xticklabels(ax[i].get_xticklabels(), fontsize=FONTSIZE-5)
+    ax[i].set_yticklabels(ax[i].get_yticklabels(), fontsize=FONTSIZE-5)
 
 
 fig.suptitle(dataset.capitalize(), fontsize=FONTSIZE+3)

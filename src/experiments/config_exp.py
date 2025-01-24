@@ -6,7 +6,6 @@ from jax import numpy as jnp
 from icecream import ic
 from src.QNN import PulsedQNN, GateQNN
 from src.QNN.BaseQNN import BaseQNN
-from src.EQK import EQKn
 from src.utils import load_pickle
 from src.utils import pickle_extension
 from src.Sampler.utils import scale_points
@@ -238,10 +237,6 @@ def get_qnn(model: str, n_qubits: int, n_layers: int, realistic_gates: bool = Fa
         raise ValueError(f'Model {model} not recognized. Available: pulsed, mixed and gate')
     return qnn
 
-
-def get_eqk(qnn: BaseQNN):
-    eqk = EQKn(qnn)
-    return eqk
 
 
 def get_optimal_lr(optimizer: str, dataset: str) -> tuple[dict, dict]:

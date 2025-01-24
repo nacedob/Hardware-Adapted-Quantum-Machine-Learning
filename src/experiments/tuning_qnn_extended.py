@@ -77,7 +77,7 @@ if optimizer != 'rms':
     tune_decay = False
 
 
-EXP_RESULTS_PATH = os.path.join(get_root_path('Hardware-Adapted-Quantum-Machine-Learning'), f'data/results/tuning_extended/{model}')
+EXP_RESULTS_PATH = os.path.join(get_root_path(), f'data/results/tuning_extended/{model}')
 QNN_SUBPATH = 'trained_qnn'
 os.makedirs(EXP_RESULTS_PATH, exist_ok=True)
 

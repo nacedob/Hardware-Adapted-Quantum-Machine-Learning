@@ -66,7 +66,7 @@ else:
     model_list = [model_]
 # model_list = ['gate']
 
-root_path = get_root_path('Hardware-Adapted-Quantum-Machine-Learning')
+root_path = get_root_path()
 EXP_RESULTS_PATH = os.path.join(root_path, f'data/results/tuning_fine/{optimizer}/{dataset}')
 PARTIAL_RESULTS_PATH = os.path.join(EXP_RESULTS_PATH, f'{EXP_RESULTS_PATH}/{{}}_q_{{}}_l_{{}}')
 QNN_PATH = os.path.join(PARTIAL_RESULTS_PATH, 'trained_qnn')
